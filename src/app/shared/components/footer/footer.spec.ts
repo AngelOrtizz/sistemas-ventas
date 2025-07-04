@@ -8,6 +8,7 @@ describe('Footer', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      
       declarations: [Footer]
     })
     .compileComponents();

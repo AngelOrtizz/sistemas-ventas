@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './app.scss'
 })
 export class App {
-  protected title = 'sistemas-ventas-aammo-giri5091-app';
+  public title = 'sistemas-ventas-aammo-giri5091-app';
 }

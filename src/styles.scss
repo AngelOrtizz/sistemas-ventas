@@ -9,8 +9,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   width: 100%;
 }
 
-:root {
-  @include mat.toolbar-theme((
-      container-background-color: rgb(10, 221, 176),
-  ));
+// Custom toolbar styling
+.mat-toolbar {
+  background-color: rgb(10, 221, 176) !important;
 }
