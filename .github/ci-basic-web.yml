@@ -1,0 +1,39 @@
+# # This workflow is for CI/CD of the frontend application.
+
+# Nombre del workflow: CI/CD Frontend
+name: CI/CD Frontend
+# Controla lo que se va a ejecutar en el workflow.
+# En este caso,
+on:
+  push:
+    branches:
+      [release, develop]
+  pull_request:
+    branches: 
+      [release, develop]
+  paths:
+    - '**'
+jobs: 
+  sistema-ventas-web:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: sistema-ventas-web
+    steps:
+      -use: actions/checkout@v4 # Clona el repositorio
+      -use: actions/setup-node@v4 # usar Node.js
+      with:
+        node-version: 22.16.0 # Versión de Node.js
+
+        # cargar cache de node_modules, para reducir el tiempo de instalación
+      -use: actions/cache@v4
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+        # Instalar dependencias
+        -name: Install dependencies
+        # No ejecutar si no hay cambios en node_modules
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm install
+        
