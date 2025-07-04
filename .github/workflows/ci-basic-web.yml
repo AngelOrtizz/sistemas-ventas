@@ -6,9 +6,9 @@ name: CI/CD Frontend
 # En este caso,
 on:
   push:
-    branches: [release, develop]
+    branches: [release, develop, feature/auth]
   pull_request:
-    branches: [release, develop]
+    branches: [release, develop, feature/auth]
 
 jobs: 
   sistema-ventas-web:
