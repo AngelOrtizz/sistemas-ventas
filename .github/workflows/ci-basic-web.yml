@@ -8,13 +8,9 @@ on:
   push:
     branches:
       [release, develop]
-  paths:
-    - '**'
   pull_request:
     branches: 
       [release, develop]
-  paths:
-    - '**'
 jobs: 
   sistema-ventas-web:
     runs-on: ubuntu-latest
@@ -31,12 +27,14 @@ jobs:
           node-version: 22.16.0 # Versión de Node.js
 
       - name: Cache node_modules # cargar cache de node_modules, para reducir el tiempo de instalación
+        id: cache
         uses: actions/cache@v4
         with:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install dependencies # Instalar dependencias
-        if: steps.cache.outputs.cache-hit != 'true' # No ejecutar si no hay cambios en node_modules
+      # No ejecutar si no hay cambios en node_modules
+        if: steps.cache.outputs.cache-hit != 'true'
         run: npm install
         
