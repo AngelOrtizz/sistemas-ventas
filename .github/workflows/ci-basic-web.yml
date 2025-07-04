@@ -33,7 +33,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node-${{ hashFiles('sistema-ventas-web/package-lock.json') }}
 
       - name: Install dependencies # Instalar dependencias
       # No ejecutar si no hay cambios en node_modules
