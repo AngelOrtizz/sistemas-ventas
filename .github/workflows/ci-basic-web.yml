@@ -13,9 +13,6 @@ on:
 jobs: 
   sistema-ventas-web:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: sistema-ventas-web
     steps:
       - name: Checkout repository # Clona el repositorio
         uses: actions/checkout@v4
