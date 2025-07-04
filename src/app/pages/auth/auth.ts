@@ -11,7 +11,9 @@ import { BaseForm } from '../../shared/utils/base.form';
 })
 export class Auth implements OnInit, OnDestroy {
   hide = true;
+  private destroy$ = new Subject();
 
+  
   loginForm;
 
   constructor (private fb:FormBuilder, public baseForm: BaseForm){
@@ -25,7 +27,15 @@ export class Auth implements OnInit, OnDestroy {
     console.log("init Oninit")
   }
 
+  onSubmit() {
+    if (this.loginForm.invalid) return;
+    
+    const form = this.loginForm.value;
+    console.log("Form submitted:", form);
+  }
+
   ngOnDestroy(): void {
-    console.log("destroy")
+    this.destroy$.next({});
+    this.destroy$.complete();
   }
 }
